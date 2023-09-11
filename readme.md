@@ -43,3 +43,5 @@ https://github.com/zsvoboda/ngods-stocks/blob/main/docker-compose.yml
   spark-submit --class com.example.App /opt/spark/expire/iceberg-expire/target/iceberg-expire-1.0-SNAPSHOT.jar
   ```
 
+https://blog.csdn.net/spark_dev/article/details/125332540
+目錄裡的第14課
