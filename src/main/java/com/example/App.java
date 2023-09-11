@@ -1,6 +1,7 @@
 package com.example;
 import org.apache.iceberg.Table;
 import org.apache.iceberg.spark.SparkCatalog;
+import org.apache.iceberg.spark.source.SparkTable;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.connector.catalog.Identifier;
 import org.apache.spark.sql.connector.catalog.TableCatalog;
@@ -25,9 +26,9 @@ public class App {
 
             CatalogPlugin warehouseCatalog = spark.sessionState().catalogManager().catalog("warehouse");
             TableCatalog tableCatalog = (TableCatalog) warehouseCatalog;
-            // Table table = tableCatalog.loadTable(Identifier.of("test", "test_table"));
-            Table table = (Table) tableCatalog.loadTable(Identifier.of(new String[]{"test"}, "test_table"));
-
+            //Table table = tableCatalog.loadTable(Identifier.of("test", "test_table"));
+            SparkTable sparkTable = (SparkTable) tableCatalog.loadTable(Identifier.of(new String[]{"test"}, "test_table"));
+	    Table table = sparkTable.table();
             // Load the Iceberg table using Spark's catalog
             // TableCatalog catalog = (TableCatalog) spark.sessionState().catalogManager().v2SessionCatalog();
             // Table table = (Table) catalog.loadTable(Identifier.of(new String[]{"test"}, "test_table"));
